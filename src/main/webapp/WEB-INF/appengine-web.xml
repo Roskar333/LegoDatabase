@@ -9,7 +9,7 @@
 	    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
 	    <property name="drivername" value="com.mysql.cj.jdbc.Driver"/>
 	    <property name="googleusername" value="root"/>
-	    <property name="googlepassword" value="kukkuu"/>
+	    <property name="googlepassword" value="passw"/>
 	    <property name="googledatabasename" value="legopoolmysqlrest"/>
 	    <property name="localusername" value="team16"/>
 	    <property name="localpassword" value="error"/>
