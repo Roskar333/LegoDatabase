@@ -61,4 +61,27 @@ public class Robot2 {
             motorB.close();
         }
     }
+    public static void sendRobotStatistics(Atrib attributes) {
+        try {
+            URL url = new URL("http://localhost:8080/rest/robot/statistics");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setDoOutput(true);
+
+            ObjectMapper mapper = new ObjectMapper();
+            String json = mapper.writeValueAsString(attributes);
+
+            try (OutputStream os = con.getOutputStream()) {
+                byte[] input = json.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+
+            int responseCode = con.getResponseCode();
+            System.out.println("POST Response Code: " + responseCode);
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle communication errors
+        }
+    }
 }

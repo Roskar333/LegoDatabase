@@ -1,0 +1,31 @@
+body{ 
+    background-color: rgb(236, 221, 250);
+}
+
+
+input{ 
+    align-items: center; 
+    border-radius: 25px;
+    
+
+}
+
+
+p {
+    color:rgba(124, 0, 161, 0.726);
+    text-align: center;
+
+}
+
+h1{
+    color:rgba(124, 0, 161, 0.726);
+    font-size: 50px;
+    text-align: center;
+}
+
+
+h2{
+    color:rgba(124, 0, 161, 0.726);
+    font-size: 30px;
+    text-align: center;
+} 

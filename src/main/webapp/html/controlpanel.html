@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Team 16 EV3</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>  
+
+
+<h1> Team 16 Web Services Project </h1>
+<p> Commands for robot:  </p>
+
+<form action="/rest/robot/settings" method="post">
+    <b>Speed:</b> <input type="text" name="speed" value="" placeholder="Default 300"><br><br>
+    <b>How many rounds:</b> <input type="text" name="timesLooped" value="" placeholder="Default 2"><br><br>
+    <b>Obstacle Detection Distance:</b> <input type="text" name="obstacleDetectionDistance" value="" placeholder="Default 15"><br><br>
+    
+    <input type="submit" name="ok" value="Send"><br><br>
+    <a href="/jsp/updatewalle.jsp" target="_blank" class="button">Update</a><br><br>
+</form>
+
+<p><b>Current Settings:</b></p>
+<div id="currentSettings"></div>
+
+<script>
+    fetch('/rest/robot/currentSettings')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('currentSettings').innerText = JSON.stringify(data);
+        });
+</script>
+
+
+</body>
+</html>

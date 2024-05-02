@@ -1,20 +1,50 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Hello App Engine</title>
-  </head>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Robot Control Panel</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>  
 
-  <body>
-    <h1>Hello App Engine!</h1>
+<h1>Robot Control Panel</h1>
 
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
-      </tr>
-      <tr>
-        <td><a href='/hello'>The servlet</a></td>
-      </tr>
-    </table>
-  </body>
+<h2>Settings</h2>
+<form id="settingsForm" action="/rest/robot/settings" method="post">
+    <label for="speed">Speed:</label>
+    <input type="number" id="speed" name="speed" placeholder="Enter speed"><br><br>
+    
+    <label for="timesLooped">Times Looped:</label>
+    <input type="number" id="timesLooped" name="timesLooped" placeholder="Enter loop count"><br><br>
+    
+    <label for="obstacleDetectionDistance">Obstacle Detection Distance:</label>
+    <input type="number" id="obstacleDetectionDistance" name="obstacleDetectionDistance" placeholder="Enter distance"><br><br>
+    
+    <input type="submit" value="Set Settings"><br><br>
+</form>
+
+<h2>Current Settings</h2>
+<div id="currentSettings"></div>
+
+<h2>Statistics</h2>
+<div id="statistics"></div>
+
+<script>
+    // Fetch current settings on page load
+    fetch('/rest/robot/currentSettings')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('currentSettings').innerText = JSON.stringify(data);
+        });
+    
+    // Fetch statistics on page load
+    fetch('/rest/robot/statistics')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('statistics').innerText = JSON.stringify(data);
+        });
+</script>
+
+</body>
 </html>
